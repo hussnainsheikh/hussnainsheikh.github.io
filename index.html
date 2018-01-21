@@ -1,1 +1,90 @@
-Hello World
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Coming Soon</title>
+<link href="tools/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="tools/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="tools/jquery.min.js"></script>
+<script type="text/javascript" src="tools/particle.min.js"></script> 
+<link href='https://fonts.googleapis.com/css?family=Merriweather:700,400|Lato' rel='stylesheet' type='text/css'>
+<link href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+
+
+</head>
+<body>
+	<div id="particle-canvas">
+		<div class="wrapper"><!--wrapper started-->
+			<div class="abovebanner"><!-- above banner started -->
+				<div class="header"><!-- header started-->
+					<h1 id="logo">Coming <span>Soon</span></h1>
+					<p class="line1">Hussnain Sheikh</p>
+				</div><!-- header ended-->	
+				<div class="content"><!-- content started-->
+					<p>Stay in Touch!</p>
+					<div class="form"><!-- form started -->
+						<div class="mainform">
+							<div class="field"><input type="text" id="test" value="enter your email address"/></div>
+							<div class="submit"><input type="button" id="email" name="email" value="subscribe here" /></div>						
+						</div>
+					</div><!-- form ended -->
+				</div><!-- content ended -->
+			</div><!-- above banner ended -->	
+			<div class="belowbanner">
+				<div class="email">
+					<h2>email me</h2>
+					<p><a href="mailto:sheikhhussnain23@gmail.com">Hussnain Sheikh</a></p>
+				</div>
+				<div class="social">
+					<h2>social</h2>
+						<a href="https://www.facebook.com/Sh.Hussnain125" class="socicon-facebook"></a>
+						<a href="https://twitter.com/Hussnain125" class="socicon-twitter"></a>
+						<a href="https://www.linkedin.com/in/sheikh-hussnain/" class="socicon-linkedin"></a>
+						<a href="https://github.com/hussnainsheikh/" class="socicon-github"></a>
+						<a href="https://stackoverflow.com/users/7128525/hussnain-sheikh" class="socicon-stackoverflow"></a>
+				</div>			
+				<div class="call">
+					<h2>call me</h2>
+					<p><a href="tel:+923048494014">+92 304 8494014</a></p>
+				</div>			
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function($) {
+			var placeholder = $("#test").val();
+			$("#test").keydown(function() {
+			    if (this.value == placeholder) {
+			        this.value = '';
+			    }
+			}).blur(function() {
+			    if (this.value == '') {
+			        this.value = placeholder;
+			    }
+			});
+			$("#email").click(function() {
+				var email = $("#test").value;
+				$.ajax({
+					type: "POST",
+					url: "./email.php",
+					data: {email: email},
+					success: function (res) {
+						$(".mainform").hide();
+						$(".form").html(res);
+					}
+				});
+			});
+			var canvasDiv = document.getElementById('particle-canvas');
+			var options = {
+			  particleColor: '#888',
+			  background: 'https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/img/demo-bg.jpg',
+			  interactive: true,
+			  speed: 'medium',
+			  density: 'high'
+			};
+			var particleCanvas = new ParticleNetwork(canvasDiv, options);
+		});
+	</script>
+</body>
+</html>
