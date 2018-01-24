@@ -8,10 +8,11 @@ if (isset($_POST['email'])) {
 	$email = $_POST['email'];
 	$headers = 'From: <sheikhhussnain23@gmail.com>' . "\r\n";
 	if(mail($email, "hussnainsheikh.github.io", "Thanks for Subcribing. Stay in touch", $headers)){
-		echo json_encode(array('error'=> false, 'data' => 'Thanks for subscription!', 'email' => $email));
+		$headers = 'From: New Subscriber<'.$email.'>';
+		if(mail('sheikhhussnain23@gmail.com', 'New Subscriber', 'There is a new subscriber on your website: '. $email)){
+			echo json_encode(array('error'=> false, 'data' => 'Thanks for subscription!', 'email' => $email));
+		}
 	}
-	$headers = 'From: New Subscriber<'.$email.'>';
-	mail('sheikhhussnain23@gmail.com', 'New Subscriber', 'There is a new subscriber on your website: '. $email);
 }
 
 ?>
