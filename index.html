@@ -63,14 +63,16 @@
 			    }
 			});
 			$("#email").click(function() {
-				var email = $("#test").value;
+				var email = $("#test").val();
+				postdata = 'email=' + email;
 				$.ajax({
 					type: "POST",
-					url: "https://hussnainsheikh.000webhostapp.com/email.php",
-					data: {email: email},
+					url: "./email.php",
+					data: postdata,
+					dataType: "json",
 					success: function (res) {
 						$(".mainform").hide();
-						$(".form").html(res);
+						$(".form").html(res.data);
 					}
 				});
 			});
