@@ -38,14 +38,12 @@ text-align: center;
     text-align: center;
     vertical-align: middle;
     position: absolute;
-    z-index: 999;
 }
 
 .abovebanner{
 	width: 100%;
 	float: left;
 	position: relative;
-	/*background: url(../images/background.jpg) center top no-repeat;*/
 	background-size: cover;
 	min-height: 499px;
 }
@@ -55,6 +53,8 @@ text-align: center;
 	float: left;
 	display: table-cell;
 	margin: 140px 0 100px 0;
+	position: relative;
+	z-index: 999;
 }
 
 h1{
@@ -77,6 +77,8 @@ p.line1{
 .content{
 	width: 100%;
 	float: left;
+	position: relative;
+	z-index: 999;
 }
 
 .content p{
@@ -140,6 +142,8 @@ width: 100%;
 	margin-top: 40px;
 	width: 100%;
 	float: left;
+	position: relative;
+	z-index: 999;
 }
 
 h2{
